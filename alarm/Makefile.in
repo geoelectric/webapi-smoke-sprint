@@ -10,14 +10,14 @@ VPATH		= @srcdir@
 relativesrcdir  = @relativesrcdir@
 
 include $(DEPTH)/config/autoconf.mk
+include $(topsrcdir)/config/rules.mk
 
-MOCHITEST_FILES = \
-  test_contacts_basics_simple.html \
-  $(NULL)
+include $(DEPTH)/config/autoconf.mk
 
 DIRS = \
-    devicestorage \
-    alarm \
-    $(NULL)
+  $(NULL)
 
-include $(topsrcdir)/config/rules.mk
+MOCHITEST_FILES = \
+  test_alarm_permitted_app.html \
+  test_alarm_non_permitted_app.html \
+  $(NULL)
