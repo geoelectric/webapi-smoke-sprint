@@ -62,7 +62,7 @@ try {
   } catch(e) {
     exception = true;
   }
-  is(exception, false, "We should not get an exception");
+  is(exception, true, "We should get an exception");
 
   exception = false;
   try {
@@ -71,7 +71,7 @@ try {
   } catch(e) {
     exception = true;
   }
-  is(exception, false, "We should not get an exception");
+  is(exception, true, "We should get an exception");
 
   exception = false;
   try {
@@ -80,7 +80,7 @@ try {
   } catch(e) {
     exception = true;
   }
-  is(exception, false, "We should not get an exception");
+  is(exception, true, "We should get an exception");
 
   exception = false;
   try {
@@ -89,7 +89,7 @@ try {
   } catch(e) {
     exception = true;
   }
-  is(exception, false, "We should not get an exception");
+  is(exception, true, "We should get an exception");
 
   exception = false;
   try {
@@ -98,7 +98,7 @@ try {
   } catch(e) {
     exception = true;
   }
-  is(exception, false, "We should not get an exception");
+  is(exception, true, "We should get an exception");
 
   exception = false;
   try {
@@ -107,7 +107,7 @@ try {
   } catch(e) {
     exception = true;
   }
-  is(exception, false, "We should not get an exception");
+  is(exception, true, "We should get an exception");
 
   exception = false;
   try {
@@ -116,7 +116,7 @@ try {
   } catch(e) {
     exception = true;
   }
-  is(exception, false, "We should not get an exception");
+  is(exception, true, "We should get an exception");
 }
 finally {
   window.screen.removeEventListener("mozorientationchange", unexpectedEvent);
