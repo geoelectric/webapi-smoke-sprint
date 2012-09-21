@@ -13,6 +13,7 @@ include $(DEPTH)/config/autoconf.mk
 
 MOCHITEST_FILES = \
   test_contacts_basics_simple.html \
+  test_screen_orientation.html \
   $(NULL)
 
 DIRS = \
