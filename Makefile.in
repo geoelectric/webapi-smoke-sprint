@@ -19,6 +19,8 @@ MOCHITEST_FILES = \
 DIRS = \
     devicestorage \
     alarm \
+    vibration \
+    power \
     $(NULL)
 
 include $(topsrcdir)/config/rules.mk

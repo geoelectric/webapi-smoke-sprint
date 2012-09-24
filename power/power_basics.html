@@ -24,11 +24,7 @@ postMsg(result);
 
 /** Test permission **/
 
-SpecialPowers.addPermission("power", true, document);
-
 var power = navigator.mozPower;
-
-dump(navigator.mozPower);
 
 var result = {
 "result": power ? true : false, 
