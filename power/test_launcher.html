@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Test for Power API</title>
+  <script type="application/javascript" src="/MochiKit/MochiKit.js"></script>
+  <script type="application/javascript" src="/tests/SimpleTest/SimpleTest.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="/tests/SimpleTest/test.css"/>
+</head>
+<body/>
+
+  <script type="application/javascript" >
+  SimpleTest.waitForExplicitFinish();
+  SpecialPowers.addPermission("power", true, "http://example.org/tests/dom/power/test/test_power_basics.html");
+
+  var iframe = document.createElement("iframe");
+  iframe.mozApp = "http://example.org/manifest.webapp";
+  iframe.src = "http://example.org/tests/dom/power/test/test_power_basics.html";
+  iframe.setAttribute("id", "ifrm");
+  iframe.onload = loaded();
+  document.body.appendChild(iframe);
+
+  function loaded() {
+
+    window.addEventListener("message", function onMessage(event) {
+       if (event.data == "finished") {
+         window.removeEventListener("message", onMessage, false);
+         SimpleTest.finish();
+       } else {
+         dump(JSON.stringify(event.data));
+         ok(event.data.result, event.data.msg);
+       }
+           
+     }, false);
+
+  }
+  </script>
+</head>
+
+</html>
