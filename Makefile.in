@@ -21,6 +21,7 @@ DIRS = \
     alarm \
     vibration \
     power \
+    idle \
     $(NULL)
 
 include $(topsrcdir)/config/rules.mk
