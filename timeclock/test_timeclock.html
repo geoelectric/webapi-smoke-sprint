@@ -33,21 +33,7 @@ try {
 } catch(e) {
   ok(true, "chromeWindow.navigator.mozTime.set({}) should throw");
 }
-
-currentDate = Date.now();
-window.addEventListener('moztimechange', doNext,true);
-nav.mozTime.set(0);
-}
-
-var counter = 0;
-function doNext() {
-if (counter = 1) {
-  is(currentDate, Date.now(), 'Date has succesfully changed to' + Date.now());
-  SimpleTest.finish();
-}
-ok(true, 'Date has changed to' + Date.now());
-counter++;
-nav.mozTime.set(currentDate);
+SimpleTest.finish();
 }
 
 SimpleTest.waitForExplicitFinish();
