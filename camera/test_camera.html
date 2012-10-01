@@ -10,22 +10,15 @@
 
 <script class="testbody" type="text/javascript;version=1.7">
 
-var nav = SpecialPowers.wrap(navigator);
-var currentDate;
-
 function doTest() {
-try {
-  navigator.mozCameras;
-  ok(false, "navigator.mozCameras should throw in regular mochitest");
-} catch(e) {
-  ok(true, "navigator.mozCameras should throw in regular mochitest");
-}
+  navigator.mozCameras.getCamera(function() {alert('onsucces')}, function() {alert('onerror')});;
+  ok(true, "navigator.mozCameras.getCamera should not throw");
 
 try {
-  nav.mozCameras.previewSizes;
-  ok(false, "chromeWindow.navigator.mozCameras.previewSizes should throw");
+  navigator.mozCameras.getListOfCameras();
+  ok(false, "navigator.mozCameras.getListOfCameras should throw, not implemented");
 } catch(e) {
-  ok(true, "chromeWindow.navigator.mozCameras.previewSizes should throw");
+  ok(true, "navigator.mozCameras.getListOfCameras should throw, not implemented");
 }
 SimpleTest.finish();
 }
