@@ -11,19 +11,11 @@ relativesrcdir  = @relativesrcdir@
 
 include $(DEPTH)/config/autoconf.mk
 
-MOCHITEST_FILES = \
-  test_contacts_basics_simple.html \
-  test_screen_orientation.html \
+DIRS = \
   $(NULL)
 
-DIRS = \
-    devicestorage \
-    alarm \
-    vibration \
-    power \
-    settings \
-    battery \
-    camera \
-    $(NULL)
+MOCHITEST_FILES = \
+  test_camera.html \
+  $(NULL)
 
 include $(topsrcdir)/config/rules.mk

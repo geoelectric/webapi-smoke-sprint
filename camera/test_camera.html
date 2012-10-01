@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-  <title>Test for mozTime</title>
+  <title>Test for mozCameras</title>
   <script type="text/javascript" src="/MochiKit/MochiKit.js"></script>
   <script type="text/javascript" src="/tests/SimpleTest/SimpleTest.js"></script>
   <link rel="stylesheet" type="text/css" href="/tests/SimpleTest/test.css" />
@@ -15,23 +15,17 @@ var currentDate;
 
 function doTest() {
 try {
-  navigator.mozTime;
-  ok(false, "navigator.mozTime should throw in regular mochitest");
+  navigator.mozCameras;
+  ok(false, "navigator.mozCameras should throw in regular mochitest");
 } catch(e) {
-  ok(true, "navigator.mozTime should throw in regular mochitest");
+  ok(true, "navigator.mozCameras should throw in regular mochitest");
 }
 
 try {
-  nav.mozTime.set(null);
-  ok(false, "chromeWindow.navigator.mozTime.set(null) should throw");
+  nav.mozCameras.previewSizes;
+  ok(false, "chromeWindow.navigator.mozCameras.previewSizes should throw");
 } catch(e) {
-  ok(true, "chromeWindow.navigator.mozTime.set(null) should throw");
-}
-try {
-  nav.mozTime.set({});
-  ok(false, "chromeWindow.navigator.mozTime.set({}) should throw");
-} catch(e) {
-  ok(true, "chromeWindow.navigator.mozTime.set({}) should throw");
+  ok(true, "chromeWindow.navigator.mozCameras.previewSizes should throw");
 }
 SimpleTest.finish();
 }
