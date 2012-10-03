@@ -12,7 +12,9 @@ relativesrcdir  = @relativesrcdir@
 include $(DEPTH)/config/autoconf.mk
 
 MOCHITEST_FILES = \
-  test_vibrator.html \
+  device_storage_common.js \
+  test_enumerate_mobile.html \
+  test_stat.html \
   $(NULL)
 
 include $(topsrcdir)/config/rules.mk

@@ -12,7 +12,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=717103
   <script type="application/javascript" src="/MochiKit/MochiKit.js"></script>
   <script type="application/javascript"
           src="chrome://mochikit/content/tests/SimpleTest/ChromeUtils.js"></script>
-  <script type="text/javascript" src="devicestorage_common.js"></script>
+  <script type="text/javascript" src="device_storage_common.js"></script>
 
 <link rel="stylesheet" type="text/css" href="/tests/SimpleTest/test.css" />
 </head>
@@ -20,7 +20,7 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=717103
 <a target="_blank" href="https://bugzilla.mozilla.org/show_bug.cgi?id=717103">Mozilla Bug 717103</a>
 <p id="display"></p>
 <div id="content" style="display: none">
-  
+
 </div>
 <pre id="test">
 <script class="testbody" type="text/javascript">
@@ -32,9 +32,9 @@ SpecialPowers.addPermission("device-storage", true, document);
 mediaTypes = ['music'];
 mediaType = 0;
 mimeTypes = ['audio/mp3'];
-var storage; 
-var prefix; 
-var file = "abracadabra.mp3"; 
+var storage;
+var prefix;
+var file = "abracadabra.mp3";
 var addedSoFar = 0;
 prefix = mediaTypes[0];
 
@@ -44,10 +44,10 @@ function enumerateSuccess(e) {
     devicestorage_cleanup();
     return;
   }
-  
+
   var filename = e.target.result.name;
 
-  ok(file == e.target.result.name, "Was able to write to deviceStorage on mobile" ); 
+  ok(file == e.target.result.name, "Was able to write to deviceStorage on mobile" );
 
   // clean up
   var cleanup = storage.delete(prefix + "/" + file);
