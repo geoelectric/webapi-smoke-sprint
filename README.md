@@ -7,9 +7,9 @@ Setting up:
 
 1. git clone this to a local directory.
 
-2. Check out and build b2g locally.
+2. Check out and build b2g locally. (from here, $B2G_HOME)
 
-3. Check out and build mozilla-central (desktop) locally.
+3. Check out and build mozilla-central locally. (from here, $MOZILLA_CENTRAL)
 
 4. Symlink the directory from 1. to $B2G_HOME/gecko/dom/tests/mochitest/b2g-webapi-sanity
 
@@ -25,5 +25,6 @@ Running:
 
 3. run:
 
+python runtestsb2g.py --b2gpath $B2G_HOME --xre-path $MOZILLA-CENTRAL/obj-x86_64-unknown-linux-gnu/dist/bin --console-level INFO --emulator arm --test-path dom/tests/mochitest/b2g-webapi-sanity
 
-                                                            
+Note that your xre-path might be slightly different, as the obj directory will be named after whatever architecture you built on. The above is for Ubuntu.
