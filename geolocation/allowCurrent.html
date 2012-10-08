@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<!--
+https://bugzilla.mozilla.org/show_bug.cgi?id=478911
+-->
+<head>
+  <title>Test for getCurrentPosition </title>
+  <script type="text/javascript" src="geolocation_common.js"></script>
+
+<link rel="stylesheet" type="text/css" href="/tests/SimpleTest/test.css" />
+</head>
+<body>
+<a target="_blank" href="https://bugzilla.mozilla.org/show_bug.cgi?id=478911">Mozilla Bug 478911</a>
+<p id="display"></p>
+<div id="content" style="display: none">
+  
+</div>
+<pre id="test">
+<script class="testbody" type="text/javascript">
+
+SpecialPowers.setBoolPref("dom.mozSettings.enabled", true);
+
+var mozSettings = window.navigator.mozSettings; 
+
+var lock = mozSettings.createLock();
+var req = lock.set({"geolocation.enabled": true});
+
+function postMsg(msg)
+{
+  parent.postMessage(msg, "http://mochi.test:8888");
+}
+
+req.onerror = function () {
+  postMsg({"result": false, "msg" : "error"});
+}
+
+req.onsuccess = function () {
+  resume_geolocationProvider();
+  force_prompt(true);
+
+  function successCallback(position) {
+    check_geolocation(position);
+    reset_prompt();
+    postMsg("finished", "*");
+   
+  }
+
+  function failureCallbackAfterMozsetting(error) {
+   postMsg({"result": false, "msg" : "unable to get geolocation"});
+ }
+
+  navigator.geolocation.getCurrentPosition(successCallback, failureCallbackAfterMozsetting);
+
+}
+</script>
+</pre>
+</body>
+</html>
+
