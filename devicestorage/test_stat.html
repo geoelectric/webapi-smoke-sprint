@@ -22,6 +22,9 @@ https://bugzilla.mozilla.org/show_bug.cgi?id=717103
 <pre id="test">
 <script class="testbody" type="text/javascript">
 
+// It is a requirement for an sdcard to be loaded, before this test will pass.
+// This is accomplished by adding a --sdcard 20/50...MB to the command line
+
 devicestorage_setup();
 SpecialPowers.addPermission("device-storage", true, document);
 SpecialPowers.addPermission("devicestorage", true, document);
