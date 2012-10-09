@@ -14,11 +14,13 @@
   // If the file is not present then the test will fail silently
 
   SimpleTest.waitForExplicitFinish();
-  SpecialPowers.addPermission("power", true, "http://example.org/tests/dom/power/test/power_basics.html");
+  var url = "http://example.org/tests/dom/power/test/power_basics.html";
+  
+  SpecialPowers.addPermission("power", true, url);
 
   var iframe = document.createElement("iframe");
   iframe.mozApp = "http://example.org/manifest.webapp";
-  iframe.src = "http://example.org/tests/dom/power/test/test_power_basics.html";
+  iframe.src = url;
   iframe.setAttribute("id", "ifrm");
   iframe.onload = loaded();
   document.body.appendChild(iframe);
