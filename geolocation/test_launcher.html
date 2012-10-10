@@ -12,18 +12,20 @@
   <script type="application/javascript">
 
   // It is a requirement that Bug: 797513 gets landed on m/c, before this test will pass
-  // It is a requirement that allowCurrent.html is in the directory path that is noted below. 
-  // If the file is not present then the test will fail silently
 
   SimpleTest.waitForExplicitFinish();
-  SpecialPowers.addPermission("settings", true, "http://example.org/");
-  SpecialPowers.addPermission("geolocation", true, "http://example.org/");
-  SpecialPowers.addPermission("browser", true, "http://example.org/");
+  var domain = "http://example.org/"; 
+  var url = window.location.href.replace(/:\/\/[^\/]*\//, "://example.org/");
+  url = url.substring(0, url.lastIndexOf('/') + "/allowCurrent.html"); 
+  
+  SpecialPowers.addPermission("settings", true, domain);
+  SpecialPowers.addPermission("geolocation", true, domain);
+  SpecialPowers.addPermission("browser", true, domain);
 
 
   var iframe = document.createElement("iframe");
-  iframe.mozApp = "http://example.org/manifest.webapp";
-  iframe.src = "http://example.org/tests/dom/tests/mochitest/geolocation/allowCurrent.html";
+  iframe.mozApp = domain + "manifest.webapp";
+  iframe.src = url;
   iframe.id = "ifrm";
   iframe.onload = loaded();
   iframe.mozbrowser = true;

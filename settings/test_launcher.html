@@ -10,17 +10,15 @@
 <body/>
 
   <script type="application/javascript">
-
-  // It is a requirement that settings_basics.html is in the directory path that is noted below. 
-  // If the file is not present then the test will fail silently
-
   SimpleTest.waitForExplicitFinish();
   SpecialPowers.addPermission("settings", true, "http://example.org/");
   SpecialPowers.setBoolPref("dom.mozSettings.enabled", true);
 
+  var url = window.location.href.replace(/:\/\/[^\/]*\//, "://example.org/");
+  url = url.substring(0, url.lastIndexOf('/') + "/settings_basics.html"); 
   var iframe = document.createElement("iframe");
   iframe.mozApp = "http://example.org/manifest.webapp";
-  iframe.src = "http://example.org/tests/dom/settings/tests/settings_basics.html";
+  iframe.src = url;
   iframe.setAttribute("id", "ifrm");
   iframe.onload = loaded();
   document.body.appendChild(iframe);
