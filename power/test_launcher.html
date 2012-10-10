@@ -12,7 +12,7 @@
   <script type="application/javascript">
   SimpleTest.waitForExplicitFinish();
   var url = window.location.href.replace(/:\/\/[^\/]*\//, "://example.org/");
-  url = url.substring(0, url.lastIndexOf('/') + "/fm_basics.html"); 
+  url = url.substring(0, url.lastIndexOf('/')) + "/fm_basics.html"; 
   
   SpecialPowers.addPermission("power", true, url);
 

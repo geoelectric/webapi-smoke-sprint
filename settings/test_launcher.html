@@ -15,7 +15,7 @@
   SpecialPowers.setBoolPref("dom.mozSettings.enabled", true);
 
   var url = window.location.href.replace(/:\/\/[^\/]*\//, "://example.org/");
-  url = url.substring(0, url.lastIndexOf('/') + "/settings_basics.html"); 
+  url = url.substring(0, url.lastIndexOf('/')) + "/settings_basics.html"; 
   var iframe = document.createElement("iframe");
   iframe.mozApp = "http://example.org/manifest.webapp";
   iframe.src = url;

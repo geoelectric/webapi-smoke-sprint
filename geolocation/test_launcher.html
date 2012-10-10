@@ -16,7 +16,7 @@
   SimpleTest.waitForExplicitFinish();
   var domain = "http://example.org/"; 
   var url = window.location.href.replace(/:\/\/[^\/]*\//, "://example.org/");
-  url = url.substring(0, url.lastIndexOf('/') + "/allowCurrent.html"); 
+  url = url.substring(0, url.lastIndexOf('/')) + "/allowCurrent.html"; 
   
   SpecialPowers.addPermission("settings", true, domain);
   SpecialPowers.addPermission("geolocation", true, domain);
