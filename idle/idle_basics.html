@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <title>Test for Vibrator</title>
+  <script type="text/javascript" src="/MochiKit/MochiKit.js"></script>
+  <script type="text/javascript" src="/tests/SimpleTest/SimpleTest.js"></script>
+  <link rel="stylesheet" type="text/css" href="/tests/SimpleTest/test.css" />
+</head>
+<body onload="dotest()">
+
+<script class="testbody" type="text/javascript;version=1.7">
+
+function doOnIdle() {
+ok(true, "idle called after 1 second");
+win.navigator.removeIdleObserver(observer1);
+SimpleTest.finish();
+}
+
+var observer1 = {time: 1, onidle: doOnIdle, onactive: function() {}};
+//navigator.addIdleObserver({});
+
+var wm =  SpecialPowers.wrap(Components).
+          classes["@mozilla.org/appshell/window-mediator;1"].
+          getService(Components.interfaces.nsIWindowMediator);
+var win = wm.getMostRecentWindow("navigator:browser");
+
+function dotest() {
+try {
+ navigator.addIdleObserver(observer1);
+  ok(false, "navigator.addIdleObserver should throw in regular mochitest");
+} catch(e) {
+  ok(true, "navigator.addIdleObserver should throw in regular mochitest");
+}
+try {
+ navigator.removeIdleObserver(observer1);
+  ok(false, "navigator.removeIdleObserver should throw in regular mochitest");
+} catch(e) {
+  ok(true, "navigator.removeIdleObserver should throw in regular mochitest");
+}
+
+if (!win) {
+  ok(true, "No chromeWindow exists, bailing out early");
+  SimpleTest.finish();
+  return;
+}
+
+try {
+  win.navigator.addIdleObserver(null);
+  ok(false, "chromeWindow.navigator.addIdleObserver(null) should throw");
+} catch(e) {
+  ok(true, "chromeWindow.navigator.addIdleObserver(null) should throw");
+}
+
+win.navigator.addIdleObserver(observer1);
+//setTimeout(doNext();
+}
+
+function doNext() {
+SimpleTest.finish();
+}
+
+SimpleTest.waitForExplicitFinish();
+
+</script>
+</body>
+
+</html>
