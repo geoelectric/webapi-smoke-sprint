@@ -12,7 +12,9 @@ relativesrcdir  = @relativesrcdir@
 include $(DEPTH)/config/autoconf.mk
 
 MOCHITEST_FILES = \
+  idle_basics.html \
   test_idle.html \
+  test_launcher.html \
   $(NULL)
 
 include $(topsrcdir)/config/rules.mk

@@ -12,6 +12,8 @@ relativesrcdir  = @relativesrcdir@
 include $(DEPTH)/config/autoconf.mk
 
 MOCHITEST_FILES = \
+  timeclock_basics.html \
+  test_launcher.html \
   test_time_clock.html \
   $(NULL)
 

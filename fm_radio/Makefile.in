@@ -15,8 +15,8 @@ DIRS = \
   $(NULL)
 
 MOCHITEST_FILES = \
-  test_launcher.html \
   fm_basics.html \
+  test_launcher.html \
   $(NULL)
 
 include $(topsrcdir)/config/rules.mk

@@ -17,7 +17,9 @@ DIRS = \
     camera \
     contacts \
     device_storage \
+    fm_radio \
     geolocation \
+    idle \
     power \
     screen_orientation \
     settings \
