@@ -10,26 +10,24 @@
 <body/>
 
   <script type="application/javascript">
+  // It is a requirement that power_basics.html is in the directory path that is noted below. 
+  // If the file is not present then the test will fail silently
 
-  // It is a requirement that Bug: 797513 gets landed on m/c, before this test will pass
-
-  SimpleTest.waitForExplicitFinish();
-  var domain = "http://example.org/"; 
   var url = window.location.href.replace(/:\/\/[^\/]*\//, "://example.org/");
-  url = url.substring(0, url.lastIndexOf('/')) + "/allowCurrent.html"; 
-  
-  SpecialPowers.addPermission("settings", true, domain);
-  SpecialPowers.addPermission("geolocation", true, domain);
-  SpecialPowers.addPermission("browser", true, domain);
-
+  ok (true, url);
+  url = url.substring(0, url.lastIndexOf('/')) + "/fm_basics.html"; 
+  var domain = "http://example.org/";
+  ok(true, url);
+  SimpleTest.waitForExplicitFinish();
+  SpecialPowers.addPermission("mozFM", true, "http://example.org/");
+  SpecialPowers.addPermission("fmradio", true, "http://example.org/");
+  SpecialPowers.addPermission("settings", true, "http://example.org/");
 
   var iframe = document.createElement("iframe");
-  iframe.mozApp = domain + "manifest.webapp";
+  iframe.mozApp = "http://example.org/manifest.webapp";
   iframe.src = url;
-  iframe.id = "ifrm";
+  iframe.setAttribute("id", "ifrm");
   iframe.onload = loaded();
-  iframe.mozbrowser = true;
-  
   document.body.appendChild(iframe);
 
   function loaded() {

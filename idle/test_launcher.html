@@ -10,15 +10,31 @@
 <body/>
 
   <script type="application/javascript">
-  SimpleTest.waitForExplicitFinish();
-  SpecialPowers.addPermission("settings", true, "http://example.org/");
-  SpecialPowers.setBoolPref("dom.mozSettings.enabled", true);
+function getSiblingURI(myURI, siblingFilename, newDomain) {
+  // Takes a URI and a filename, returns the URI of that filename if it were a sibling
+  // of the original. Optionally replaces the domain as well.
+  //
+  // Ex: getSiblingURI("http://www.example.org/foo/bar.html", "fred.html")
+  //       returns "http://www.example.org/foo/fred.html"
 
-  var url = window.location.href.replace(/:\/\/[^\/]*\//, "://example.org/");
-  url = url.substring(0, url.lastIndexOf('/')) + "/settings_basics.html"; 
+  // strip filename off URI
+  resultURI = myURI.substr(0, myURI.lastIndexOf("/") + 1);
+
+  // If domain specified, replace it
+  if (newDomain) {
+    resultURI = resultURI.replace(/:\/\/[^\/]*\//, "://" + newDomain + "/");
+  }
+
+  return resultURI + siblingFilename;
+}
+  var testURL = getSiblingURI(window.location.href, "idle_basics.html", "http://www.example.org");
+
+  SimpleTest.waitForExplicitFinish();
+  SpecialPowers.addPermission("settings", true, testURL);
+
   var iframe = document.createElement("iframe");
   iframe.mozApp = "http://example.org/manifest.webapp";
-  iframe.src = url;
+  iframe.src = testURL;
   iframe.setAttribute("id", "ifrm");
   iframe.onload = loaded();
   document.body.appendChild(iframe);

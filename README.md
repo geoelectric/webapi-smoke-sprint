@@ -28,3 +28,18 @@ Running:
 python runtestsb2g.py --b2gpath $B2G_HOME --xre-path $MOZILLA-CENTRAL/obj-x86_64-unknown-linux-gnu/dist/bin --console-level INFO --emulator arm --test-path dom/tests/mochitest/b2g-webapi-sanity
 
 Note that your xre-path might be slightly different, as the obj directory will be named after whatever architecture you built on. The above is for Ubuntu.
+
+Test Suite Requirements: 
+
+###power:  
+These tests are expected to be run from within gecko/dom/power  
+
+###settings:  
+These tests are expected to be run from within gecko/dom/settings  
+
+###geolocation:  
+These tests are expected to be run from withing gecko/dom/tests/mochitest/geolocation  
+The second requirement is that Bug: 797513 be landed on m-c  
+
+###deviceStorage:  
+These tests require that you set an sdcard size --sdcard 20/50/75..etc MB when the runtestsb2g.py command is executed. 
