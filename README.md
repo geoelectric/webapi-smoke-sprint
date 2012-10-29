@@ -32,7 +32,7 @@ Note that your xre-path might be slightly different, as the obj directory will b
 Test Suite Requirements: 
 
 ###geolocation:  
-The second requirement is that Bug: 797513 be landed
+Bug 797513 (default geolocation) must be landed
 
 ###deviceStorage:  
 These tests require that you set an sdcard size --sdcard 20/50/75..etc MB when the runtestsb2g.py command is executed. 
