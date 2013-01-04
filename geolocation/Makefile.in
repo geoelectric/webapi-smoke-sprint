@@ -15,8 +15,8 @@ DIRS = \
   $(NULL)
 
 MOCHITEST_FILES = \
-  test_launcher.html \
-  allowCurrent.html \
+  geolocation_common.js \
+  test_allow_current.html \
   $(NULL)
 
 include $(topsrcdir)/config/rules.mk

@@ -18,12 +18,11 @@
 "use strict";
 
 if (!SpecialPowers.getBoolPref("dom.mozContacts.enabled")) {
-  var comp = SpecialPowers.wrap(Components);
-  comp.utils.import("resource://gre/modules/ContactService.jsm");
+  //var comp = SpecialPowers.wrap(Components);
+  //comp.utils.import("resource://gre/modules/ContactService.jsm");
   SpecialPowers.setBoolPref("dom.mozContacts.enabled", true);
 }
-
-SpecialPowers.addPermission("contacts", true, document);
+ok(true, "TEST");
 
 // For Sorting
 var c1 = {
@@ -127,8 +126,8 @@ function onUnwantedSuccess() {
   ok(false, "onUnwantedSuccess: shouldn't get here");
 }
 
-function onFailure() {
-  ok(false, "in on Failure!");
+function onFailure(e) {
+  ok(false, "in on Failure!" + JSON.stringify(e));
 }
 
 function checkStr(str1, str2, msg) {

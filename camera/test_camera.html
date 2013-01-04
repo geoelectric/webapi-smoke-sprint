@@ -11,14 +11,18 @@
 <script class="testbody" type="text/javascript;version=1.7">
 
 function doTest() {
-  navigator.mozCameras.getCamera(function() {alert('onsucces')}, function() {alert('onerror')});;
-  ok(true, "navigator.mozCameras.getCamera should not throw");
+  //navigator.mozCameras.getCamera(function() {alert('onsucces')}, function() {alert('onerror')});;
+  //ok(true, "navigator.mozCameras.getCamera should not throw");
 
 try {
-  navigator.mozCameras.getListOfCameras();
-  ok(false, "navigator.mozCameras.getListOfCameras should throw, not implemented");
+//  cameras = navigator.mozCameras.getListOfCameras();
+//  ok(cameras[0] == "back", "the back camera is available");
+//  ok(true, "navigator.mozCameras.getListOfCameras should not throw");
+//  cameras[0].viewfinder.pause();
+//  cameras[0].viewfinder.mozSrcObject = null;
+
 } catch(e) {
-  ok(true, "navigator.mozCameras.getListOfCameras should throw, not implemented");
+//  ok(false, "navigator.mozCameras.getListOfCameras should not throw");
 }
 SimpleTest.finish();
 }

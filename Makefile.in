@@ -17,14 +17,11 @@ MOCHITEST_FILES = \
   $(NULL)
 
 DIRS = \
-    devicestorage \
     alarm \
     vibration \
     power \
     settings \
     battery \
-    camera \
-    geolocation \
     $(NULL)
 
 include $(topsrcdir)/config/rules.mk
